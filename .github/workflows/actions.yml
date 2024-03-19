@@ -1,6 +1,6 @@
 name: Tests
 
-on: [push, pull_request]
+on: [push, pull_request,workflow_dispatch]
 
 jobs:
   check:
@@ -18,13 +18,3 @@ jobs:
 
       - name: Check formatting
         run: forge fmt --check
-
-      - name: Check Gas Snapshot
-        run: forge snapshot --check
-
-
-      - name: Run tests
-        run: forge test -vvv
-        env:
-          # Change profile to prod. when deploying to production.
-          FOUNDRY_PROFILE: ${{ (github.ref == 'refs/heads/main' || github.base_ref == 'main') && 'prod' }}

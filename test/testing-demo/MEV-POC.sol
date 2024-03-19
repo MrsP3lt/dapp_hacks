@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import "forge-std/Test.sol";
 
 interface IUniswapV2Router {
+
     function swapExactTokensForTokens(
         uint256 amountIn,
         uint256 amountOutMin,
@@ -11,14 +12,18 @@ interface IUniswapV2Router {
         address to,
         uint256 deadline
     ) external returns (uint256[] memory amounts);
+
 }
 
 interface IERC20 {
+
     function balanceOf(address owner) external view returns (uint256);
     function approve(address spender, uint256 amount) external;
+
 }
 
 contract Attacker {
+
     IUniswapV2Router public Router2 = IUniswapV2Router(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
     IERC20 public USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48); // token0
@@ -56,9 +61,11 @@ contract Attacker {
     function getWETHBalance(address user) external view returns (uint256 result) {
         return WETH.balanceOf(user);
     }
+
 }
 
 contract Sandwich is Test {
+
     Attacker public attacker;
     address public victim;
 
@@ -115,4 +122,5 @@ contract Sandwich is Test {
         console.log("USDC Balance after (victim)  = ", attacker.getUSDCBalance(victim));
         console.log("WETH Balance after (victim) = ", attacker.getWETHBalance(victim));
     }
+
 }

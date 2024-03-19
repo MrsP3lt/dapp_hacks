@@ -5,6 +5,7 @@ pragma solidity ^0.8.20;
 import "forge-std/Test.sol";
 
 abstract contract Reentrancy {
+
     enum State {
         PRE_ATTACK,
         ATTACK,
@@ -99,9 +100,11 @@ abstract contract Reentrancy {
     function supportsInterface(bytes4) public pure returns (bool) {
         return true;
     }
+
 }
 
 contract ReentrancyExampleVictim {
+
     mapping(address => uint256) balance;
 
     function deposit() external payable {
@@ -113,9 +116,11 @@ contract ReentrancyExampleVictim {
         require(success, "ETH transfer failed");
         balance[msg.sender] = 0;
     }
+
 }
 
 contract ReentrancyExampleAttack is Reentrancy {
+
     // The victim to perform reentrancy attack on
     address target;
 
@@ -185,9 +190,11 @@ contract ReentrancyExampleAttack is Reentrancy {
         reentrancyStage = State(uint256(reentrancyStage) + 1);
         _;
     }
+
 }
 
 contract ReentrancyExampleTest is Test {
+
     ReentrancyExampleAttack public attackContract;
     ReentrancyExampleVictim public victimContract;
 
@@ -201,4 +208,5 @@ contract ReentrancyExampleTest is Test {
     function testReentrancyAttack() public {
         attackContract.initiateAttack();
     }
+
 }

@@ -21,6 +21,7 @@ enum FlashLoanProviders {
 }
 
 library FlashLoanProvider {
+
     /**
      * @dev Allows a user to take a flash loan from a specified FlashloanProvider
      * @param flp The flash loan provider to take the loan from
@@ -106,9 +107,11 @@ library FlashLoanProvider {
             revert("FlashLoanProvider: Flash loan provider not supported");
         }
     }
+
 }
 
 abstract contract FlashLoan {
+
     using FlashLoanProvider for FlashLoanProviders;
 
     /**
@@ -227,9 +230,11 @@ abstract contract FlashLoan {
     fallback() external virtual {
         _fallback();
     }
+
 }
 
 contract MultiProviderFlashLoanExample is FlashLoan, Test {
+
     function initiateAttack() external {
         deal(address(EthereumTokens.DAI), address(this), 1 ether);
         console.log("DAI BALANCE BEFORE:", EthereumTokens.DAI.balanceOf(address(this)));
@@ -248,9 +253,11 @@ contract MultiProviderFlashLoanExample is FlashLoan, Test {
     function _completeAttack() internal view override {
         console.log("DAI BALANCE AFTER :", EthereumTokens.DAI.balanceOf(address(this)));
     }
+
 }
 
 contract FlashLoanExample is FlashLoan, Test {
+
     FlashLoanProviders internal _flp;
 
     function initiateAttack(FlashLoanProviders flp) external {
@@ -278,9 +285,11 @@ contract FlashLoanExample is FlashLoan, Test {
     function _completeAttack() internal view override {
         console.log("DAI BALANCE AFTER :", EthereumTokens.DAI.balanceOf(address(this)));
     }
+
 }
 
 contract FlashLoanExampleTest is Test {
+
     uint256 mainnetFork;
 
     FlashLoanExample public flashLoanExample;
@@ -313,4 +322,5 @@ contract FlashLoanExampleTest is Test {
     function testMultiProviderFlashLoan() public {
         multiProviderFlashLoanExample.initiateAttack();
     }
+
 }

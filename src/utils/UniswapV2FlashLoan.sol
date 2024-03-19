@@ -6,6 +6,7 @@ import {IUniswapV2Factory} from "../../src/interfaces/IUniswapV2Factory.sol";
 import {IUniswapV2Pair} from "../../src/interfaces/IUniswapV2Pair.sol";
 
 library UniswapV2FlashLoan {
+
     /**
      * @dev struct that hold the reference of IUnisawpV2Pair and asset address
      */
@@ -176,4 +177,5 @@ library UniswapV2FlashLoan {
     function calcFlashloanFee(uint256 amount) internal pure returns (uint256 fee) {
         fee = ((amount * 3) / 997) + 1;
     }
+
 }

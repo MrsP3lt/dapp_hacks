@@ -11,6 +11,7 @@ import "forge-std/console.sol";
  * makes a callback to the receiver on transfers
  */
 abstract contract Reentrancy {
+
     enum State {
         PRE_ATTACK,
         ATTACK,
@@ -105,9 +106,11 @@ abstract contract Reentrancy {
     function supportsInterface(bytes4) public pure returns (bool) {
         return true;
     }
+
 }
 
 abstract contract PriceManipulation is Reentrancy {
+
     using PriceManipulationProvider for PriceManipulationProviders;
 
     /**
@@ -190,9 +193,11 @@ abstract contract PriceManipulation is Reentrancy {
             }
         }
     }
+
 }
 
 library CurvePriceManipulation {
+
     struct Context {
         ICurvePoolRegistry poolRegistry;
     }
@@ -246,13 +251,17 @@ library CurvePriceManipulation {
 
         return Context(poolRegistry);
     }
+
 }
 
 interface ICurvePoolRegistry {
+
     function find_pool_for_coins(address token0, address token1) external view returns (address);
+
 }
 
 interface ICurvePool {
+
     function exchange(int128 i, int128 j, uint256 dx, uint256 min_dy) external payable returns (uint256);
     function add_liquidity(uint256[2] calldata amounts, uint256 minMintAmount) external payable returns (uint256);
     function remove_liquidity(uint256 amount, uint256[2] memory minAmounts) external returns (uint256);
@@ -260,6 +269,7 @@ interface ICurvePool {
     function balances(uint256 i) external view returns (uint256);
     function lp_token() external view returns (address);
     function get_virtual_price() external view returns (uint256);
+
 }
 
 enum PriceManipulationProviders {
@@ -268,6 +278,7 @@ enum PriceManipulationProviders {
 }
 
 library PriceManipulationProvider {
+
     /**
      * @dev Function to manipulate price using different price manipulation providers.
      * @param pmp The price manipulation provider to use. ex: CURVE.
@@ -311,9 +322,11 @@ library PriceManipulationProvider {
         //     return CurvePriceManipulation.RETURN_DATA;
         // }
     }
+
 }
 
 contract PriceManipulationTemplate is PriceManipulation, Test {
+
     // stETH / ETH Curve pool
     ICurvePool pool = ICurvePool(0xDC24316b9AE028F1497c275EB9192a3Ea0f67022);
 
@@ -340,13 +353,17 @@ contract PriceManipulationTemplate is PriceManipulation, Test {
         // Finish attack
         console.log("Virtual price after :", pool.get_virtual_price());
     }
+
 }
 
 interface IstETH {
+
     function submit(address referrel) external payable;
+
 }
 
 contract PriceManipulationTest is Test {
+
     uint256 mainnetFork;
 
     PriceManipulationTemplate public attackContract;
@@ -359,4 +376,5 @@ contract PriceManipulationTest is Test {
     function testPriceManipulationAttack() public {
         attackContract.initiateAttack();
     }
+
 }

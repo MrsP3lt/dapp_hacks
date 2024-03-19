@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "forge-std/interfaces/IERC20.sol";
 
 library MakerDAOFlashLoan {
+
     /**
      * @dev struct that hold the reference of dssFlash contract
      */
@@ -75,9 +76,12 @@ library MakerDAOFlashLoan {
         (initiator, token, amount, fee, data) = abi.decode(_data[4:], (address, address, uint256, uint256, bytes));
         return (initiator, token, amount, fee, data);
     }
+
 }
 
 interface IDssFlash {
+
     function flashLoan(address receiver, address token, uint256 amount, bytes memory data) external;
     function dai() external view returns (address);
+
 }

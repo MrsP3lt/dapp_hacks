@@ -7,6 +7,7 @@ import {console2} from "forge-std/console2.sol";
 import {FixedPointMathLib} from "solady/src/utils/FixedPointMathLib.sol";
 
 contract Bomber {
+
     uint256 internal constant FREE_MEM_PTR = 0x40;
     uint256 internal constant WORD_SIZE = 32;
     uint256 internal constant ERROR_STRING_SELECTOR = 0x08c379a0; // Error(string)
@@ -41,9 +42,11 @@ contract Bomber {
             revert(ptr, payload_length)
         }
     }
+
 }
 
 contract Victim {
+
     event CaughtBomb();
     event CaughtBombWithSignature(uint256 signature);
 
@@ -102,7 +105,7 @@ contract Victim {
 
     // ❌ unsafe (some future compiler version could avoid copying the revert data to memory if it's unused)
     function lowLevelWithBytesUnused() external {
-        (bool success, bytes memory revertdata) = address(bomber).call(abi.encodeWithSignature("bomb()"));
+        (bool success, /* bytes memory revertdata*/ ) = address(bomber).call(abi.encodeWithSignature("bomb()"));
         if (!success) {
             emit CaughtBomb();
         }
@@ -149,9 +152,11 @@ contract Victim {
             emit CaughtBomb();
         }
     }
+
 }
 
 contract TestReturnBomb is Test {
+
     Victim victim;
     uint256 constant GAS_STIPEND = 1_000_000;
 
@@ -208,6 +213,7 @@ contract TestReturnBomb is Test {
         (bool succ,) = address(victim).call{gas: GAS_STIPEND}(abi.encodeWithSignature("excessivelySafeCall()"));
         assertTrue(succ);
     }
+
 }
 
 // library ExcessivelySafeCall {

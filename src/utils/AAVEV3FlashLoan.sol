@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "forge-std/interfaces/IERC20.sol";
 
 library AAVEV3FlashLoan {
+
     /**
      * @dev struct that hold the reference of IAAVEV3LendingPool
      */
@@ -125,9 +126,11 @@ library AAVEV3FlashLoan {
             abi.decode(data[4:], (address[], uint256[], uint256[], address, bytes));
         return (assets, amounts, premiums, initiator, params);
     }
+
 }
 
 interface IAAVEV3Pool {
+
     function flashLoan(
         address receiverAddress,
         address[] calldata assets,
@@ -137,8 +140,11 @@ interface IAAVEV3Pool {
         bytes calldata params,
         uint16 referralCode
     ) external;
+
 }
 
 interface IAAVEV3PoolAddressesProvider {
+
     function getPool() external view returns (address);
+
 }

@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "forge-std/interfaces/IERC20.sol";
 
 library UniswapV3FlashLoan {
+
     /**
      * @dev struct that hold the reference of IUnisawpV2Pair and asset address
      */
@@ -200,15 +201,20 @@ library UniswapV3FlashLoan {
         }
         revert("UniswapV3Flashloan: Pair not found/amount to big");
     }
+
 }
 
 interface IUniswapV3Pool {
+
     function flash(address recipient, uint256 amount0Out, uint256 amount1Out, bytes calldata data) external;
     function token0() external view returns (address);
     function token1() external view returns (address);
     function fee() external view returns (uint24);
+
 }
 
 interface IUniswapV3Factory {
+
     function getPool(address token0, address token1, uint24 fee) external view returns (address);
+
 }

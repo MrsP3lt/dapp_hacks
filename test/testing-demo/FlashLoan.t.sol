@@ -19,6 +19,7 @@ enum FlashLoanProviders {
 }
 
 library FlashLoanProvider {
+
     /**
      * @dev Allows a user to take a flash loan from a specified FlashloanProvider
      * @param flp The flash loan provider to take the loan from
@@ -104,9 +105,11 @@ library FlashLoanProvider {
             return new bytes(0);
         }
     }
+
 }
 
 abstract contract FlashLoan {
+
     using FlashLoanProvider for FlashLoanProviders;
 
     /**
@@ -229,9 +232,11 @@ abstract contract FlashLoan {
     receive() external payable virtual {
         _fallback();
     }
+
 }
 
 contract FlashLoanTemplate is FlashLoan, Test {
+
     function initiateAttack() external {
         // Take flash loan on some token
         deal(address(EthereumTokens.DAI), address(this), 900_000 * 1e18);
@@ -246,9 +251,11 @@ contract FlashLoanTemplate is FlashLoan, Test {
         // Finish attack
         // This function is called after the flash loan is repayed
     }
+
 }
 
 contract FlashLoanTest is Test {
+
     uint256 mainnetFork;
 
     FlashLoanTemplate public flashLoanTemplate;
@@ -261,4 +268,5 @@ contract FlashLoanTest is Test {
     function testFlashLoan() public {
         flashLoanTemplate.initiateAttack();
     }
+
 }

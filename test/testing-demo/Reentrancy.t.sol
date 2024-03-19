@@ -5,6 +5,7 @@ import "forge-std/Test.sol";
 import "forge-std/console.sol";
 
 abstract contract Reentrancy {
+
     enum State {
         PRE_ATTACK,
         ATTACK,
@@ -99,9 +100,11 @@ abstract contract Reentrancy {
     function supportsInterface(bytes4) public pure returns (bool) {
         return true;
     }
+
 }
 
 contract ReentrancyTemplate is Reentrancy {
+
     // The victim to perform reentrancy attack on
     address target;
 
@@ -128,9 +131,11 @@ contract ReentrancyTemplate is Reentrancy {
         console.log("Attacker balance after %s", address(this).balance);
         // TODO: Modify the attack cleanup here
     }
+
 }
 
 contract ReentrancyTest is Test {
+
     ReentrancyTemplate public attackContract;
     address victimContract = address(0x0); // Modify this to be your victim contract
 
@@ -141,4 +146,5 @@ contract ReentrancyTest is Test {
     function testReentrancyAttack() public view {
         attackContract.initiateAttack();
     }
+
 }

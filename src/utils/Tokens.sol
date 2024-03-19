@@ -29,6 +29,7 @@ import "../interfaces/IUniswapV3Factory.sol";
 */
 
 library EthereumTokens {
+
     IUniswapV2Router public constant UNISWAP_V2_ROUTER = IUniswapV2Router(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     IUniswapV2Factory public constant UNISWAP_V2_FACTORY = IUniswapV2Factory(0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f);
     IUniswapV3Router public constant UNISWAP_V3_ROUTER = IUniswapV3Router(0xE592427A0AEce92De3Edee1F18E0157C05861564);
@@ -87,9 +88,11 @@ library EthereumTokens {
     IERC20 public constant XDCE = IERC20(0x41AB1b6fcbB2fA9DCEd81aCbdeC13Ea6315F2Bf2);
     IERC20 public constant ONEINCH = IERC20(0x111111111117dC0aa78b770fA6A738034120C302);
     IERC20 public constant steCRV = IERC20(0x06325440D014e39736583c165C2963BA99fAf14E);
+
 }
 
 library BinanceTokens {
+
     IUniswapV2Router public constant UNISWAP_V2_ROUTER = IUniswapV2Router(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     IUniswapV2Factory public constant UNISWAP_V2_FACTORY = IUniswapV2Factory(0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73);
 
@@ -144,9 +147,11 @@ library BinanceTokens {
     IERC20 public constant BAT = IERC20(0x101d82428437127bF1608F699CD651e6Abf9766E);
     IERC20 public constant XCN = IERC20(0x7324c7C0d95CEBC73eEa7E85CbAac0dBdf88a05b);
     IERC20 public constant COMP = IERC20(0x52CE071Bd9b1C4B00A0b92D298c512478CaD67e8);
+
 }
 
 library PolygonTokens {
+
     IERC20 public constant NATIVE_ASSET = IERC20(address(0x0));
     // Top 50 tokens by market cap on polygonscan
     IERC20 public constant USDT = IERC20(0xc2132D05D31c914a87C6611C10748AEb04B58e8F);
@@ -199,9 +204,11 @@ library PolygonTokens {
     IERC20 public constant BAL = IERC20(0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3);
     IERC20 public constant SUSHI = IERC20(0x0b3F868E0BE5597D5DB7fEB59E1CADBb0fdDa50a);
     IERC20 public constant UST = IERC20(0x692597b009d13C4049a947CAB2239b7d6517875F);
+
 }
 
 library AvalancheTokens {
+
     IERC20 public constant NATIVE_ASSET = IERC20(address(0x0));
     // Top 50 tokens by market cap on snowtrace
     IERC20 public constant USDTe = IERC20(0xc7198437980c041c805A1EDcbA50c1Ce5db95118);
@@ -254,9 +261,11 @@ library AvalancheTokens {
     IERC20 public constant sJADE = IERC20(0x3D9eAB723df76808bB84c05b20De27A2e69EF293);
     IERC20 public constant RISE = IERC20(0xC17c30e98541188614dF99239cABD40280810cA3);
     IERC20 public constant PENDLE = IERC20(0xfB98B335551a418cD0737375a2ea0ded62Ea213b);
+
 }
 
 library FantomTokens {
+
     IERC20 public constant NATIVE_ASSET = IERC20(address(0x0));
     // Top 50 tokens by market cap on ftmscan
     IERC20 public constant FBTC = IERC20(0xe1146b9AC456fCbB60644c36Fd3F868A9072fc6E);
@@ -309,9 +318,11 @@ library FantomTokens {
     IERC20 public constant WIGO = IERC20(0xE992bEAb6659BFF447893641A378FbbF031C5bD6);
     IERC20 public constant TETU = IERC20(0x65c9d9d080714cDa7b5d58989Dc27f897F165179);
     IERC20 public constant TSHARE = IERC20(0x4cdF39285D7Ca8eB3f090fDA0C069ba5F4145B37);
+
 }
 
 library OptimismTokens {
+
     IERC20 public constant NATIVE_ASSET = IERC20(address(0x0));
     // Top 29 tokens by market cap on optimistic.etherscan
     IERC20 public constant USDT = IERC20(0x94b008aA00579c1307B0EF2c499aD98a8ce58e58);
@@ -343,9 +354,11 @@ library OptimismTokens {
     IERC20 public constant ROOBEE = IERC20(0xb12c13e66AdE1F72f71834f2FC5082Db8C091358);
     IERC20 public constant GRG = IERC20(0xEcF46257ed31c329F204Eb43E254C609dee143B3);
     IERC20 public constant IB = IERC20(0x00a35FD824c717879BF370E70AC6868b95870Dfb);
+
 }
 
 library GnosisTokens {
+
     IERC20 public constant NATIVE_ASSET = IERC20(address(0x0));
     // Top 50 tokens by market cap on gnosisscan.io
     IERC20 public constant USDT = IERC20(0x4ECaBa5870353805a9F068101A40E0f32ed605C6);
@@ -398,6 +411,7 @@ library GnosisTokens {
     IERC20 public constant JPYC = IERC20(0x431D5dfF03120AFA4bDf332c61A6e1766eF37BDB);
     IERC20 public constant ESR = IERC20(0xD3226B12e6188133b19Ac0419f34B0ed5B10f069);
     IERC20 public constant RAID = IERC20(0x18E9262e68Cc6c6004dB93105cc7c001BB103e49);
+
 }
 // Weired ERC20
 // {'addr': '0xae616e72d3d89e847f74e8ace41ca68bbf56af79', 'name': 'GOOD', 'decimals': 6}

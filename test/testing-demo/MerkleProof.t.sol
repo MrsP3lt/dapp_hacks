@@ -7,6 +7,7 @@ import "forge-std/Test.sol";
 import {Merkle} from "murky/Merkle.sol";
 
 contract MerkleDistributorTest is Test {
+
     Merkle public m;
 
     function setUp() public {
@@ -27,4 +28,5 @@ contract MerkleDistributorTest is Test {
         bytes32[] memory proof = m.getProof(data, 2);
         assertEq(m.verifyProof(root, proof, data[2]), true);
     }
+
 }

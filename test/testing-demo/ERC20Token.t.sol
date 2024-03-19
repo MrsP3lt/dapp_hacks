@@ -9,14 +9,17 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
 contract MyToken is ERC20, Ownable, ERC20Permit {
+
     constructor(address initialOwner) ERC20("MyToken", "MTK") Ownable(initialOwner) ERC20Permit("MyToken") {}
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
+
 }
 
 contract SigUtils {
+
     bytes32 internal DOMAIN_SEPARATOR;
 
     constructor(bytes32 _DOMAIN_SEPARATOR) {
@@ -45,9 +48,11 @@ contract SigUtils {
     function getTypedDataHash(Permit memory _permit) public view returns (bytes32) {
         return keccak256(abi.encodePacked("\x19\x01", DOMAIN_SEPARATOR, getStructHash(_permit)));
     }
+
 }
 
 contract MyTokenTest is Test {
+
     MyToken internal token;
     SigUtils internal sigUtils;
 
@@ -198,4 +203,5 @@ contract MyTokenTest is Test {
         vm.prank(spender);
         token.transferFrom(owner, spender, 2e18); // attempt to transfer 2 tokens (owner only owns 1)
     }
+
 }

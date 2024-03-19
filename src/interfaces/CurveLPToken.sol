@@ -2,6 +2,7 @@
 pragma solidity ^0.8.4;
 
 interface CurveLPToken {
+
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
     event SetName(string old_name, string old_symbol, string name, string symbol, address owner, uint256 time);
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
@@ -23,4 +24,5 @@ interface CurveLPToken {
     function totalSupply() external view returns (uint256);
     function transfer(address _to, uint256 _value) external returns (bool);
     function transferFrom(address _from, address _to, uint256 _value) external returns (bool);
+
 }

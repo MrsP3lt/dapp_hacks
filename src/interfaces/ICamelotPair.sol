@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface ICamelotPair {
+
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to);
     event DrainWrongToken(address indexed token, address to);
@@ -65,4 +66,5 @@ interface ICamelotPair {
     function totalSupply() external view returns (uint256);
     function transfer(address to, uint256 value) external returns (bool);
     function transferFrom(address from, address to, uint256 value) external returns (bool);
+
 }

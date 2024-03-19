@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface IUniswapV3Pair {
+
     event Burn(
         address indexed owner,
         int24 indexed tickLower,
@@ -141,4 +142,5 @@ interface IUniswapV3Pair {
         );
     function token0() external view returns (address);
     function token1() external view returns (address);
+
 }

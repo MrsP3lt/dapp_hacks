@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface ICamelotRouter {
+
     function WETH() external view returns (address);
     function addLiquidity(
         address tokenA,
@@ -110,4 +111,5 @@ interface ICamelotRouter {
         address referrer,
         uint256 deadline
     ) external;
+
 }

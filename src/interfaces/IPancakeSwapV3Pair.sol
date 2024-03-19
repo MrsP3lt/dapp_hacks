@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface IPancakeSwapV3Pair {
+
     event Burn(
         address indexed owner,
         int24 indexed tickLower,
@@ -148,4 +149,5 @@ interface IPancakeSwapV3Pair {
         );
     function token0() external view returns (address);
     function token1() external view returns (address);
+
 }

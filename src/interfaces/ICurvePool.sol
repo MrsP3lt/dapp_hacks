@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface ICurvePool {
+
     event AddLiquidity(
         address indexed provider, uint256[2] token_amounts, uint256[2] fees, uint256 invariant, uint256 token_supply
     );
@@ -66,4 +67,5 @@ interface ICurvePool {
     function transfer_ownership_deadline() external view returns (uint256);
     function unkill_me() external;
     function withdraw_admin_fees() external;
+
 }

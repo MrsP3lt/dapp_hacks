@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface IVault {
+
     event AuthorizerChanged(address indexed newAuthorizer);
     event ExternalBalanceTransfer(address indexed token, address indexed sender, address recipient, uint256 amount);
     event FlashLoan(address indexed recipient, address indexed token, uint256 amount, uint256 feeAmount);
@@ -138,4 +139,5 @@ interface IVault {
         external
         payable
         returns (uint256 amountCalculated);
+
 }

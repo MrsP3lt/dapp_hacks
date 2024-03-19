@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface IDPPOracle {
+
     event ChangeOracle(address indexed oracle);
     event DODOFlashLoan(address borrower, address assetTo, uint256 baseAmount, uint256 quoteAmount);
     event DODOSwap(
@@ -104,4 +105,5 @@ interface IDPPOracle {
     ) external returns (bool);
     function tunePrice(uint256 newI, uint256 minBaseReserve, uint256 minQuoteReserve) external returns (bool);
     function version() external pure returns (string memory);
+
 }

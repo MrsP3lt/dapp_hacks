@@ -2,6 +2,7 @@
 pragma solidity ^0.8.4;
 
 interface CurveFactoryVolt {
+
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Deposit(address indexed recipient, uint256 shares, uint256 amount);
     event EmergencyShutdown(bool active);
@@ -158,4 +159,5 @@ interface CurveFactoryVolt {
     function withdraw(uint256 maxShares, address recipient) external returns (uint256);
     function withdraw(uint256 maxShares, address recipient, uint256 maxLoss) external returns (uint256);
     function withdrawalQueue(uint256 arg0) external view returns (address);
+
 }

@@ -2,6 +2,7 @@
 pragma solidity ^0.8.4;
 
 interface DegenBox {
+
     event LogDeploy(address indexed masterContract, bytes data, address indexed cloneAddress);
     event LogDeposit(address indexed token, address indexed from, address indexed to, uint256 amount, uint256 share);
     event LogFlashLoan(
@@ -90,4 +91,5 @@ interface DegenBox {
     function withdraw(address token_, address from, address to, uint256 amount, uint256 share)
         external
         returns (uint256 amountOut, uint256 shareOut);
+
 }

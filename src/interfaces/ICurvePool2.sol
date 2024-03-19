@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface ICurvePool {
+
     event AddLiquidity(address indexed provider, uint256[2] token_amounts, uint256 fee, uint256 token_supply);
     event ClaimAdminFee(address indexed admin, uint256 tokens);
     event CommitNewAdmin(uint256 indexed deadline, address indexed admin);
@@ -123,4 +124,5 @@ interface ICurvePool {
     function virtual_price() external view returns (uint256);
     function xcp_profit() external view returns (uint256);
     function xcp_profit_a() external view returns (uint256);
+
 }

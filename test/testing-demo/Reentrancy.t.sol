@@ -4,17 +4,39 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 
-abstract contract Reentrancy {
+contract ReentrancyTemplate {
+
+    address target;
+
+    constructor(address victim) {
+        target = victim;
+    }
+    /**
+     * @dev Initiates the reentrancy attack. Make any calls to the target contract, and continue reentrancy attack in the below callback function
+     */
+
+    function initiateAttack() external view {
+        // Initiate call to the target contract
+        console.log("Initiating attack on %s", target);
+
+        // TODO: Modify the attack here to initiate reentrancy in your victim
+        // Interface(target).someFunction();
+    }
 
     /**
      * @dev Function run the first time the callback is entered
      */
-    function _executeAttack() internal virtual;
+    function _executeAttack() internal {
+        // TODO: Modify the attack here
+    }
 
     /**
      * @dev Function run after the attack is executed
      */
-    function _completeAttack() internal virtual;
+    function _completeAttack() internal view {
+        console.log("Attacker balance after %s", address(this).balance);
+        // TODO: Modify the attack cleanup here
+    }
 
     /**
      * @dev Function run when target contract makes external call back to attack contract
@@ -91,37 +113,6 @@ abstract contract Reentrancy {
      */
     function supportsInterface(bytes4) public pure returns (bool) {
         return true;
-    }
-
-}
-
-contract ReentrancyTemplate is Reentrancy {
-
-    // The victim to perform reentrancy attack on
-    address target;
-
-    constructor(address victim) {
-        target = victim;
-    }
-    /**
-     * @dev Initiates the reentrancy attack. Make any calls to the target contract, and continue reentrancy attack in the below callback function
-     */
-
-    function initiateAttack() external view {
-        // Initiate call to the target contract
-        console.log("Initiating attack on %s", target);
-
-        // TODO: Modify the attack here to initiate reentrancy in your victim
-        // Interface(target).someFunction();
-    }
-
-    function _executeAttack() internal override {
-        // TODO: Modify the attack here
-    }
-
-    function _completeAttack() internal view override {
-        console.log("Attacker balance after %s", address(this).balance);
-        // TODO: Modify the attack cleanup here
     }
 
 }

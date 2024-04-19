@@ -6,14 +6,6 @@ import "forge-std/console.sol";
 
 abstract contract Reentrancy {
 
-    enum State {
-        PRE_ATTACK,
-        ATTACK,
-        POST_ATTACK
-    }
-
-    State reentrancyStage;
-
     /**
      * @dev Function run the first time the callback is entered
      */

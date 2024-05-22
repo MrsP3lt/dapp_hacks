@@ -2,25 +2,8 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
-
-interface IUniswapV2Router {
-
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
-}
-
-interface IERC20 {
-
-    function balanceOf(address owner) external view returns (uint256);
-    function approve(address spender, uint256 amount) external;
-
-}
+import "forge-std/interfaces/IERC20.sol";
+import {IUniswapV2Router} from "src/interfaces/IUniswapV2Router.sol";
 
 contract Attacker {
 
